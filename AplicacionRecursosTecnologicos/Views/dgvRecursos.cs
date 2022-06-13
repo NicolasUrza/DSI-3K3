@@ -29,13 +29,26 @@ namespace AplicacionRecursosTecnologicos.Views
                         recurso.Item3.nombre.ToString(),
                         recurso.Item1.modelo.nombre.ToString(),
                         recurso.Item1.getEstadoActual().nombre.ToString(),
-                        recurso.Item2.nombre.ToString()
+                        recurso.Item2.nombre.ToString(),
+                        recurso.Item2.sigla.ToString()
                     };
                 this.dgvRT.Rows.Add(fila);
 
 
             }
         }
+        public bool verificarSeleccion()
+        {
+            return this.dgvRT.SelectedRows.Count == 1;
+        }
 
+        public (RecursoTecnologico, CentroDeInvestigacion) GetRTSeleccionado()
+        {
+            var RT = new RecursoTecnologico();
+            RT.numeroRT = Convert.ToInt32(this.dgvRT.SelectedRows[0].Cells[0].Value.ToString());
+            var CI = new CentroDeInvestigacion();
+            CI.sigla = this.dgvRT.SelectedRows[0].Cells[5].Value.ToString();
+            return (RT, CI);
+        }
     }
 }

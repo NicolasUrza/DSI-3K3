@@ -72,6 +72,16 @@ namespace AplicacionRecursosTecnologicos.Views
             {
                 if (dgvTipoRecurso.verificarSeleccion())
                     this.gestor.TipoRecursoSeleccionado(dgvTipoRecurso.getTiposSeleccionados());
+                else
+                    MessageBox.Show("Debe Seleccionar al menos un Tipo", "informacion", MessageBoxButtons.OK);
+            
+            }
+            else if(btnBuscar.Text == "Buscar Turnos Disponibles")
+            {
+                if (dgvRecursos.verificarSeleccion())
+                    this.gestor.TomarSeleccionRT(dgvRecursos.GetRTSeleccionado());
+                else
+                    MessageBox.Show("Debe Seleccionar 1 Recurso Tecnologico", "informacion", MessageBoxButtons.OK);
             }
 
         }
@@ -88,5 +98,7 @@ namespace AplicacionRecursosTecnologicos.Views
             this.lblTexto.Text = "Seleccione un Recurso Tecnologico";
             this.btnBuscar.Text = "Buscar Turnos Disponibles";
         }
+
+
     }
 }

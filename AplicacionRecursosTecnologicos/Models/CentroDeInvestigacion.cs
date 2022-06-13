@@ -25,7 +25,6 @@ namespace AplicacionRecursosTecnologicos
         public string tiempoAntelacionReserva { get; set; }
         public DateTime fechaBaja { get; set; }
         public string motivoBaja { get; set; }
-        
 
 
     }

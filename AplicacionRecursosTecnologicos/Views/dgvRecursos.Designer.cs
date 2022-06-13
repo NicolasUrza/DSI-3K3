@@ -34,6 +34,7 @@
             this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sigla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             this.Marca,
             this.Modelo,
             this.Estado,
-            this.CI});
+            this.CI,
+            this.Sigla});
             this.dgvRT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRT.Location = new System.Drawing.Point(0, 0);
             this.dgvRT.MultiSelect = false;
@@ -100,6 +102,13 @@
             this.CI.Name = "CI";
             this.CI.ReadOnly = true;
             // 
+            // Sigla
+            // 
+            this.Sigla.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sigla.HeaderText = "Sigla";
+            this.Sigla.Name = "Sigla";
+            this.Sigla.ReadOnly = true;
+            // 
             // dgvRecursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,5 +130,6 @@
         private DataGridViewTextBoxColumn Modelo;
         private DataGridViewTextBoxColumn Estado;
         private DataGridViewTextBoxColumn CI;
+        private DataGridViewTextBoxColumn Sigla;
     }
 }

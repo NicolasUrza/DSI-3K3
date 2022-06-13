@@ -60,7 +60,7 @@ namespace AplicacionRecursosTecnologicos.Controller
             this.PantallaRegistrar.SolicitarSeleccionRecurso();
         }
 
-        public void TomarSeleccionRT()
+        public void TomarSeleccionRT((RecursoTecnologico, CentroDeInvestigacion ) RtyCI)
         {
 
         }

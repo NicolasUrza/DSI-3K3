@@ -15,12 +15,13 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         {
             var centro = new CentroDeInvestigacion();
             centro.nombre = fila["nombre"].ToString();
+            centro.sigla = fila["sigla"].ToString();
             return centro;
         }
         public CentroDeInvestigacion mostrarCI(RecursoTecnologico rt)
         {
             var sentenciaSql = $"select ci.* from CIxRT " +
-                "left join CentroDeInvestigacion ci on CIxRT.id_centro = ci.id_centro " +
+                "left join CentroDeInvestigacion ci on CIxRT.sigla = ci.sigla " +
                 $"where numeroRT = {rt.numeroRT}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
 
