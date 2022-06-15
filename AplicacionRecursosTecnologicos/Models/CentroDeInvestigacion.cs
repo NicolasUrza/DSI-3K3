@@ -26,6 +26,23 @@ namespace AplicacionRecursosTecnologicos
         public DateTime fechaBaja { get; set; }
         public string motivoBaja { get; set; }
 
+        public List<AsignacionCientificoDelCI> asignacionCientificoDelCI { get; set; }
+        public bool esCientificoActivo(PersonalCientifico cientifico)
+        {
+            var banderaCientificoActivo = false;
+            if(this.asignacionCientificoDelCI is not null)
+            {
+                foreach (var asignacion in asignacionCientificoDelCI)
+                {
+                    if (asignacion.esActivo(cientifico))
+                    {
 
+                        banderaCientificoActivo = true;
+                        break;
+                    }
+                }
+            }
+                return banderaCientificoActivo;
+        }
     }
 }

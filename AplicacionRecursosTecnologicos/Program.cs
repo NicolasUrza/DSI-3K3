@@ -19,9 +19,9 @@ namespace AplicacionRecursosTecnologicos
             s.fechaHoraInicio = DateTime.Now;
 
             var u = new Usuario();
-            u.usuario = "Cientifico.cintra.1";
-            s.Usuario = u;
-            sesionActual = new Sesion();
+            u.usuario = 86007;
+            s.usuario = u;
+            sesionActual = s;
             Application.Run(new Form1());
 
         }

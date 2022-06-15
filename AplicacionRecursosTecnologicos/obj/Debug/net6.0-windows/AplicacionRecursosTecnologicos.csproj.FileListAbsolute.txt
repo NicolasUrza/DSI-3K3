@@ -27,3 +27,4 @@ C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologico
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.csproj.CopyComplete
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvTipoRecurso.resources
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvRecursos.resources
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvTurno.resources

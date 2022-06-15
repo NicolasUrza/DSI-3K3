@@ -13,6 +13,8 @@ namespace AplicacionRecursosTecnologicos.Controller
     {
         private PantallaRegistrarReserva PantallaRegistrar;
         private List<int> tiposSeleccionados;
+        private PersonalCientifico Activo;
+        private RecursoTecnologico recursoSeleccionado;
         public void reservar(PantallaRegistrarReserva prr)
         {
             PantallaRegistrar = prr;
@@ -60,10 +62,42 @@ namespace AplicacionRecursosTecnologicos.Controller
             this.PantallaRegistrar.SolicitarSeleccionRecurso();
         }
 
-        public void TomarSeleccionRT((RecursoTecnologico, CentroDeInvestigacion ) RtyCI)
+        public void TomarSeleccionRT(RecursoTecnologico Rt)
         {
+            var recursoServicio = new RecursoTecnologicoServicio();
+            this.recursoSeleccionado = recursoServicio.GetRecursoBynumero(Rt.numeroRT);
+            //verificamos si el centro de Investigacion del Recurso es el mismo que el del cientifico logueado
+            if (VerificarPertenenciaAlCI())
+                VerificarTurnosDisponibles(true);
+            else
+                MessageBox.Show("NO SOS DEL MISMO CI", "informacion", MessageBoxButtons.OK);
 
         }
+        public bool VerificarPertenenciaAlCI()
+        {
+            //busco el cientifico logueado en esta sesion
+            Activo =  Program.sesionActual.buscarUsuario();
+            // le preguntamos al recurso, si su centro de investigacion es el mismo que el del cientifico logueado
+            return recursoSeleccionado.VerificarPertenenciaDelCientifico(Activo);
+        }
 
+        public void VerificarTurnosDisponibles(bool esCientificoDelCI)
+        {
+            var fechaHoraActual = new DateTime();
+            if (esCientificoDelCI)
+            {
+                fechaHoraActual = DateTime.Now;
+
+            }
+            var turnosDisponibles = recursoSeleccionado.misTurnosDisponibles(fechaHoraActual);
+            AgruparOrdenarTurnos(turnosDisponibles);
+        }
+
+        public void AgruparOrdenarTurnos(List<String[]> turnosDisponibles)
+        {
+            var turnosOrdenados = turnosDisponibles.OrderBy(x => Convert.ToDateTime(x[0])).ThenBy(x=> x[2]).ToList();
+
+            PantallaRegistrar.solicitarSeleccionTurnos(turnosOrdenados);
+        }
     }
 }

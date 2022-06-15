@@ -19,6 +19,7 @@ namespace AplicacionRecursosTecnologicos.Models
         public List<CambioEstadoRT> cambiosEstado { get; set; }
         public Modelo modelo { get; set; }
 
+        public List<Turno> turnos { get; set; }
         public bool sosTipoRecurso(List<int> tprs)
         {
             return tprs.Contains(this.tipoRecursoTecnologico.id_tipo_recurso);
@@ -59,6 +60,22 @@ namespace AplicacionRecursosTecnologicos.Models
                 break;
             }
             return estadoActual;
+        }
+
+        public bool VerificarPertenenciaDelCientifico(PersonalCientifico cientifico)
+        {
+            return this.mostrarCI().esCientificoActivo(cientifico);
+        }
+
+        public List<String[]> misTurnosDisponibles(DateTime fechaDesde)
+        {
+            var turnosDisponibles = new List<String[]>();
+            foreach(Turno turno in turnos)
+            {
+                if (turno.SosPosteriorAFechaActual(fechaDesde))
+                    turnosDisponibles.Add(turno.MostrarTurno());
+            }
+            return turnosDisponibles;
         }
     }
 }

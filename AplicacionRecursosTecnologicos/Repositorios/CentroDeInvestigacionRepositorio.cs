@@ -1,4 +1,5 @@
 ﻿using AplicacionRecursosTecnologicos.Models;
+using AplicacionRecursosTecnologicos.Servicios;
 using PatioOlmosApp.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ namespace AplicacionRecursosTecnologicos.Repositorios
             var centro = new CentroDeInvestigacion();
             centro.nombre = fila["nombre"].ToString();
             centro.sigla = fila["sigla"].ToString();
+            var asignacionServicio = new AsignacionServicio();
+            centro.asignacionCientificoDelCI = asignacionServicio.AsignacionesDeUnCI(fila["sigla"].ToString());
+
             return centro;
         }
         public CentroDeInvestigacion mostrarCI(RecursoTecnologico rt)

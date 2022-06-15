@@ -21,8 +21,11 @@ namespace AplicacionRecursosTecnologicos.Views
         public void MostrarRecursos(List<(RecursoTecnologico, CentroDeInvestigacion, Marca)> lrt)
         {
             this.dgvRT.Rows.Clear();
+            var i = 0;
+
             foreach (var recurso in lrt)
             {
+
                 var fila = new string[]
                     {
                         recurso.Item1.numeroRT.ToString(),
@@ -33,8 +36,15 @@ namespace AplicacionRecursosTecnologicos.Views
                         recurso.Item2.sigla.ToString()
                     };
                 this.dgvRT.Rows.Add(fila);
+                //coloreamos los estados de acuerdo al nombre
+                if (recurso.Item1.getEstadoActual().nombre == "Disponible")
+                    this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Blue;
+                else if (recurso.Item1.getEstadoActual().nombre == "En Mantenimiento")
+                    this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Green;
+                else if (recurso.Item1.getEstadoActual().nombre == "Con Inicio En Mantenimiento Correctivo")
+                    this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Gray;
 
-
+                i ++;
             }
         }
         public bool verificarSeleccion()
@@ -42,13 +52,11 @@ namespace AplicacionRecursosTecnologicos.Views
             return this.dgvRT.SelectedRows.Count == 1;
         }
 
-        public (RecursoTecnologico, CentroDeInvestigacion) GetRTSeleccionado()
+        public RecursoTecnologico GetRTSeleccionado()
         {
             var RT = new RecursoTecnologico();
             RT.numeroRT = Convert.ToInt32(this.dgvRT.SelectedRows[0].Cells[0].Value.ToString());
-            var CI = new CentroDeInvestigacion();
-            CI.sigla = this.dgvRT.SelectedRows[0].Cells[5].Value.ToString();
-            return (RT, CI);
+            return RT;
         }
     }
 }

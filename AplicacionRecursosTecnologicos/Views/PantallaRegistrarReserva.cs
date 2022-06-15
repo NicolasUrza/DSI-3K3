@@ -99,6 +99,15 @@ namespace AplicacionRecursosTecnologicos.Views
             this.btnBuscar.Text = "Buscar Turnos Disponibles";
         }
 
+        public void solicitarSeleccionTurnos(List<String[]> turnos)
+        {
+            this.lblTexto.Text = "Seleccione un Turno a Reservar";
+            this.btnBuscar.Text = "Reservar Turno";
+            var dgvTurno = new dgvTurno();
+            Habilitar(dgvTurno);
+            dgvTurno.MostrarTurnos(turnos);
+        }
+
 
     }
 }

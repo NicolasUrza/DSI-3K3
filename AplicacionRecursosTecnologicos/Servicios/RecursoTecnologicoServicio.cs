@@ -20,5 +20,9 @@ namespace AplicacionRecursosTecnologicos.Servicios
         {
             return rtRepositorio.buscarRecursoTeconologico();
         }
+        public RecursoTecnologico GetRecursoBynumero(int numeroRT)
+        {
+            return rtRepositorio.GetRecursoByNumero(numeroRT);
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace AplicacionRecursosTecnologicos.Models
         public string correoElectronicoInstitucional { get; set; }
         public string correoElectronicoPersonal { get; set; }
         public string telefonoCelular { get; set; }
+        public Usuario usuario { get; set; }
 
     }
 }

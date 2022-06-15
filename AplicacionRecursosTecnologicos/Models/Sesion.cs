@@ -10,8 +10,11 @@ namespace AplicacionRecursosTecnologicos.Models
     {
         public DateTime fechaHoraInicio { get; set; }
         public DateTime fechaHoraFin { get; set; }
-        public Usuario Usuario { get; set; }
+        public Usuario usuario { get; set; }
 
-
+        public PersonalCientifico buscarUsuario()
+        {
+            return this.usuario.getPersonalCientificoActivo();
+        }
     }
 }
