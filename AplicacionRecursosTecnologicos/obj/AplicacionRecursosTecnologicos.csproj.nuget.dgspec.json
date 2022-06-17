@@ -40,9 +40,17 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.SqlServer.Types": {
               "target": "Package",
               "version": "[14.0.1016.290, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

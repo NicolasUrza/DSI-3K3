@@ -13,6 +13,9 @@
     <Compile Update="Views\dgvTurno.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\frmConfirmacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\PantallaRegistrarReserva.cs">
       <SubType>Form</SubType>
     </Compile>

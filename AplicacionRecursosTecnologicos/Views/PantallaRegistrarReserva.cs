@@ -18,6 +18,7 @@ namespace AplicacionRecursosTecnologicos.Views
         private dgvTipoRecurso dgvTipoRecurso;
         private Form formularioActivo = null;
         private dgvRecursos dgvRecursos;
+        private dgvTurno dgvTurnos;
         public PantallaRegistrarReserva()
         {
             InitializeComponent();
@@ -66,27 +67,33 @@ namespace AplicacionRecursosTecnologicos.Views
             this.dgvTipoRecurso.SeleccionarTodosLosTipos();
         }
 
-        private void seleccionTipoRecurso(object sender, EventArgs e)
+        private void seleccion(object sender, EventArgs e)
         {
-            if(btnBuscar.Text == "Buscar recursos tecnologicos")
+            if (btnBuscar.Text == "Buscar recursos tecnologicos")
             {
                 if (dgvTipoRecurso.verificarSeleccion())
                     this.gestor.TipoRecursoSeleccionado(dgvTipoRecurso.getTiposSeleccionados());
                 else
                     MessageBox.Show("Debe Seleccionar al menos un Tipo", "informacion", MessageBoxButtons.OK);
-            
+
             }
-            else if(btnBuscar.Text == "Buscar Turnos Disponibles")
+            else if (btnBuscar.Text == "Buscar Turnos Disponibles")
             {
                 if (dgvRecursos.verificarSeleccion())
                     this.gestor.TomarSeleccionRT(dgvRecursos.GetRTSeleccionado());
                 else
-                    MessageBox.Show("Debe Seleccionar 1 Recurso Tecnologico", "informacion", MessageBoxButtons.OK);
+                    MessageBox.Show("Debe Seleccionar 1 Recurso Tecnologico Disponible", "informacion", MessageBoxButtons.OK);
             }
-
+            else if (btnBuscar.Text == "Reservar Turno")
+            {
+                if (dgvTurnos.verificarSeleccion())
+                    this.gestor.TurnoSeleccionado(dgvTurnos.GetTurnoSeleccionado());
+                else
+                    MessageBox.Show("Debe Seleccionar 1 Turno Disponible", "informacion", MessageBoxButtons.OK);
+            }
         }
 
-        public void MostrarRescursos(List<(RecursoTecnologico, CentroDeInvestigacion, Marca)> lrt)
+        public void MostrarRescursos(List<String[]> lrt)
         {
             this.dgvRecursos = new dgvRecursos();
             Habilitar(dgvRecursos);
@@ -103,11 +110,24 @@ namespace AplicacionRecursosTecnologicos.Views
         {
             this.lblTexto.Text = "Seleccione un Turno a Reservar";
             this.btnBuscar.Text = "Reservar Turno";
-            var dgvTurno = new dgvTurno();
-            Habilitar(dgvTurno);
-            dgvTurno.MostrarTurnos(turnos);
+            this.dgvTurnos = new dgvTurno();
+            Habilitar(dgvTurnos);
+            dgvTurnos.MostrarTurnos(turnos);
         }
 
+        public void SolicitarConfirmacionDeReserva(String informacion)
+        {
+            new frmConfirmacion(informacion, this).ShowDialog();
+        }
+        public void ConfirmarReserva(bool mail, bool wpp)
+        {
+            gestor.ReservaConfirmada(mail, wpp);
+        }
 
+        public void FinCasoUso()
+        {
+            MessageBox.Show("El turno ha sido reservado con exito", "Reserva Exitosa");
+            this.Dispose();
+        }
     }
 }

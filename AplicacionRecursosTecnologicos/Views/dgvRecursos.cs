@@ -18,7 +18,7 @@ namespace AplicacionRecursosTecnologicos.Views
             InitializeComponent();
         }
 
-        public void MostrarRecursos(List<(RecursoTecnologico, CentroDeInvestigacion, Marca)> lrt)
+        public void MostrarRecursos(List<String[]> lrt)
         {
             this.dgvRT.Rows.Clear();
             var i = 0;
@@ -26,30 +26,20 @@ namespace AplicacionRecursosTecnologicos.Views
             foreach (var recurso in lrt)
             {
 
-                var fila = new string[]
-                    {
-                        recurso.Item1.numeroRT.ToString(),
-                        recurso.Item3.nombre.ToString(),
-                        recurso.Item1.modelo.nombre.ToString(),
-                        recurso.Item1.getEstadoActual().nombre.ToString(),
-                        recurso.Item2.nombre.ToString(),
-                        recurso.Item2.sigla.ToString()
-                    };
-                this.dgvRT.Rows.Add(fila);
+                this.dgvRT.Rows.Add(recurso);
                 //coloreamos los estados de acuerdo al nombre
-                if (recurso.Item1.getEstadoActual().nombre == "Disponible")
+                if (recurso[3] == "Disponible")
                     this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Blue;
-                else if (recurso.Item1.getEstadoActual().nombre == "En Mantenimiento")
+                else if (recurso[3] == "En Mantenimiento")
                     this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Green;
-                else if (recurso.Item1.getEstadoActual().nombre == "Con Inicio En Mantenimiento Correctivo")
+                else if (recurso[3] == "Con Inicio En Mantenimiento Correctivo")
                     this.dgvRT.Rows[i].Cells[3].Style.BackColor = Color.Gray;
-
                 i ++;
             }
         }
         public bool verificarSeleccion()
         {
-            return this.dgvRT.SelectedRows.Count == 1;
+            return this.dgvRT.SelectedRows.Count == 1 && this.dgvRT.SelectedRows[0].Cells[3].Value.ToString() == "Disponible";
         }
 
         public RecursoTecnologico GetRTSeleccionado()

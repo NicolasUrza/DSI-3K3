@@ -28,3 +28,7 @@ C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologico
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvTipoRecurso.resources
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvRecursos.resources
 C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.dgvTurno.resources
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\obj\Debug\net6.0-windows\AplicacionRecursosTecnologicos.Views.frmConfirmacion.resources
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Debug\net6.0-windows\MailKit.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Debug\net6.0-windows\MimeKit.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll

@@ -15,5 +15,16 @@ namespace AplicacionRecursosTecnologicos.Models
         {
             return fechaHoraHasta.Year == 1;
         }
+        public void Finalizar()
+        {
+            fechaHoraHasta = DateTime.Now;
+        }
+        public CambioEstadoTurno() { }
+        public CambioEstadoTurno( Estado e)
+        {
+            fechaHoraDesde = DateTime.Now;
+            estado = e;
+
+        }
     }
 }

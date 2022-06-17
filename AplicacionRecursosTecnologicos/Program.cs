@@ -20,6 +20,7 @@ namespace AplicacionRecursosTecnologicos
 
             var u = new Usuario();
             u.usuario = 86007;
+
             s.usuario = u;
             sesionActual = s;
             Application.Run(new Form1());

@@ -62,7 +62,7 @@
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.seleccionTipoRecurso);
+            this.btnBuscar.Click += new System.EventHandler(this.seleccion);
             // 
             // label1
             // 

@@ -22,12 +22,8 @@ namespace AplicacionRecursosTecnologicos.Models
         public String[] MostrarTurno()
         {
             // devuelve un array de cadenas con informacion del turno
-            var cambioActual = new CambioEstadoTurno();
-            foreach(CambioEstadoTurno c in cambioEstadoTurnos)
-            {
-                if (c.esActual())
-                    cambioActual = c;
-            }
+            var cambioActual = CambioEstadoActual();
+
 
             var DiaSemana = new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
             var turno = new String[]
@@ -42,6 +38,22 @@ namespace AplicacionRecursosTecnologicos.Models
             return turno;
 
 
+        }
+        public CambioEstadoTurno CambioEstadoActual()
+        {
+            var cambioActual = new CambioEstadoTurno();
+            foreach (CambioEstadoTurno c in cambioEstadoTurnos)
+            {
+                if (c.esActual())
+                    cambioActual = c;
+            }
+            return cambioActual;
+        }
+
+        public void Reservar(Estado e)
+        {
+            var cambioEstado = new CambioEstadoTurno(e);
+            this.cambioEstadoTurnos.Add(cambioEstado);
         }
     }
 }

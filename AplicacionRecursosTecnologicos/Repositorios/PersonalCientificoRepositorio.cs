@@ -23,6 +23,8 @@ namespace AplicacionRecursosTecnologicos.Repositorios
                 perCI.apellido = fila["apellido"].ToString();
             if (!string.IsNullOrEmpty(fila["correoElectronicoPersonal"].ToString()))
                 perCI.correoElectronicoPersonal = fila["correoElectronicoPersonal"].ToString();
+            if (!string.IsNullOrEmpty(fila["correoElectronicoInstitucional"].ToString()))
+                perCI.correoElectronicoInstitucional = fila["correoElectronicoInstitucional"].ToString();
             if (!string.IsNullOrEmpty(fila["telefonoCelular"].ToString()))
                 perCI.telefonoCelular = fila["telefonoCelular"].ToString();
             var u = new Usuario();

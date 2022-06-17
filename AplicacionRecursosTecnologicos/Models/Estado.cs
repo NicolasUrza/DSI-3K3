@@ -15,5 +15,14 @@ namespace AplicacionRecursosTecnologicos.Models
         public bool esReservable { get; set; }
         public bool esCancelable { get; set; }
 
+        public bool EsAmbitoturno()
+        {
+            return ambito == "Turno";
+        }
+
+        public bool EsReservado()
+        {
+            return nombre == "Reservado";
+        }
     }
 }
