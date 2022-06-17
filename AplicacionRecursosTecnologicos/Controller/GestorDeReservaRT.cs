@@ -13,10 +13,11 @@ namespace AplicacionRecursosTecnologicos.Controller
     {
         private PantallaRegistrarReserva PantallaRegistrar;
         private List<int> tiposSeleccionados;
-        private PersonalCientifico Activo;
+        private PersonalCientifico PersonalCientificoActivo;
         private RecursoTecnologico recursoSeleccionado;
         private Turno turnoSeleccionado;
         private Estado estadoReservadoTurno;
+        // borrar y cambiar por parametro
         private CambioEstadoTurno cambioEstadoTurnoActual;
         public void reservar(PantallaRegistrarReserva prr)
         {
@@ -55,7 +56,7 @@ namespace AplicacionRecursosTecnologicos.Controller
                 //tomamos los datos para mostrar
                 var recurso = new String[]{
                     rt.numeroRT.ToString(),
-                        rt.MostrarMarcayModelo().nombre.ToString(),
+                        rt.MostrarMarcaDelModelo().nombre.ToString(),
                         rt.modelo.nombre.ToString(),
                         rt.getEstadoActual().nombre.ToString(),
                         rt.mostrarCI().nombre.ToString(),
@@ -87,9 +88,9 @@ namespace AplicacionRecursosTecnologicos.Controller
         public bool VerificarPertenenciaAlCI()
         {
             //busco el cientifico logueado en esta sesion
-            Activo =  Program.sesionActual.buscarUsuario();
+            PersonalCientificoActivo =  Program.sesionActual.buscarUsuario();
             // le preguntamos al recurso, si su centro de investigacion es el mismo que el del cientifico logueado
-            return recursoSeleccionado.VerificarPertenenciaDelCientifico(Activo);
+            return recursoSeleccionado.VerificarPertenenciaDelCientifico(PersonalCientificoActivo);
         }
 
         public void VerificarTurnosDisponibles(bool esCientificoDelCI)
@@ -183,13 +184,13 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         public string[] BuscarMail()
         {
-            return new string[] { Activo.correoElectronicoPersonal, Activo.correoElectronicoInstitucional };
+            return new string[] { PersonalCientificoActivo.correoElectronicoPersonal, PersonalCientificoActivo.correoElectronicoInstitucional };
         }
 
         public void GenerarNotificacion(String[] mails)
         {
             var DiaSemana = new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
-            var contenidoMail = $"{Activo.nombre} notificacion sobre su reserva del turno: " +
+            var contenidoMail = $"{PersonalCientificoActivo.nombre} notificacion sobre su reserva del turno: " +
                 $"Recurso seleccionado: \n numeroRT: {recursoSeleccionado.numeroRT} " +
                 $"\n Tipo: {recursoSeleccionado.tipoRecursoTecnologico.nombre} " +
                 $" Estado: {recursoSeleccionado.getEstadoActual().nombre}" +

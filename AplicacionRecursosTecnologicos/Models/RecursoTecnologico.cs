@@ -43,7 +43,7 @@ namespace AplicacionRecursosTecnologicos.Models
             return ciServicio.mostrarCI(this);
         }
        
-        public Marca MostrarMarcayModelo()
+        public Marca MostrarMarcaDelModelo()
         {
             var marcaServicio = new MarcaServicio();
             return marcaServicio.GetMarcaDelModelo(this.modelo);
