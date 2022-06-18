@@ -47,7 +47,7 @@
             this.pnHerramientas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnHerramientas.Location = new System.Drawing.Point(0, 0);
             this.pnHerramientas.Name = "pnHerramientas";
-            this.pnHerramientas.Size = new System.Drawing.Size(914, 80);
+            this.pnHerramientas.Size = new System.Drawing.Size(967, 80);
             this.pnHerramientas.TabIndex = 0;
             // 
             // btnReservarTurno
@@ -73,8 +73,9 @@
             this.pnContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContenido.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnContenido.Location = new System.Drawing.Point(0, 80);
+            this.pnContenido.MinimumSize = new System.Drawing.Size(967, 495);
             this.pnContenido.Name = "pnContenido";
-            this.pnContenido.Size = new System.Drawing.Size(914, 400);
+            this.pnContenido.Size = new System.Drawing.Size(967, 495);
             this.pnContenido.TabIndex = 1;
             // 
             // logoRemito
@@ -82,7 +83,7 @@
             this.logoRemito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.logoRemito.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoRemito.BackgroundImage")));
             this.logoRemito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.logoRemito.Location = new System.Drawing.Point(763, 310);
+            this.logoRemito.Location = new System.Drawing.Point(816, 405);
             this.logoRemito.Name = "logoRemito";
             this.logoRemito.Size = new System.Drawing.Size(151, 90);
             this.logoRemito.TabIndex = 1;
@@ -97,7 +98,7 @@
             this.logoUtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.logoUtn.Location = new System.Drawing.Point(185, 69);
             this.logoUtn.Name = "logoUtn";
-            this.logoUtn.Size = new System.Drawing.Size(559, 210);
+            this.logoUtn.Size = new System.Drawing.Size(612, 305);
             this.logoUtn.TabIndex = 0;
             this.logoUtn.TabStop = false;
             // 
@@ -105,12 +106,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 480);
+            this.ClientSize = new System.Drawing.Size(967, 575);
             this.Controls.Add(this.pnContenido);
             this.Controls.Add(this.pnHerramientas);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MinimumSize = new System.Drawing.Size(930, 519);
+            this.MinimumSize = new System.Drawing.Size(983, 614);
             this.Name = "Form1";
             this.Text = "Recursos Tecnologicos";
             this.Load += new System.EventHandler(this.Form1_Load);

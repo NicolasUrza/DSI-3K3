@@ -22,7 +22,7 @@ namespace AplicacionRecursosTecnologicos
         public string reglamento { get; set; }
         public string caracteristicasGenerales { get; set; }
         public DateTime fechaAlta { get; set; }
-        public string tiempoAntelacionReserva { get; set; }
+        public int tiempoAntelacionReserva { get; set; }
         public DateTime fechaBaja { get; set; }
         public string motivoBaja { get; set; }
 

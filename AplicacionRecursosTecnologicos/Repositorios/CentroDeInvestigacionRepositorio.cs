@@ -17,6 +17,7 @@ namespace AplicacionRecursosTecnologicos.Repositorios
             var centro = new CentroDeInvestigacion();
             centro.nombre = fila["nombre"].ToString();
             centro.sigla = fila["sigla"].ToString();
+            centro.tiempoAntelacionReserva = Convert.ToInt32(fila["tiempoAntelacionReserva"].ToString());
             var asignacionServicio = new AsignacionServicio();
             centro.asignacionCientificoDelCI = asignacionServicio.AsignacionesDeUnCI(fila["sigla"].ToString());
 

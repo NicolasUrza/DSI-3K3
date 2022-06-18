@@ -42,7 +42,7 @@
             this.button1.BackColor = System.Drawing.Color.Brown;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(12, 397);
+            this.button1.Location = new System.Drawing.Point(12, 403);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(77, 41);
             this.button1.TabIndex = 1;
@@ -56,7 +56,7 @@
             this.btnBuscar.BackColor = System.Drawing.Color.YellowGreen;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscar.Location = new System.Drawing.Point(675, 397);
+            this.btnBuscar.Location = new System.Drawing.Point(826, 403);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(113, 41);
             this.btnBuscar.TabIndex = 2;
@@ -69,7 +69,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(280, 357);
+            this.label1.Location = new System.Drawing.Point(431, 363);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(496, 20);
@@ -84,7 +84,7 @@
             this.pnDgv.Controls.Add(this.label1);
             this.pnDgv.Location = new System.Drawing.Point(12, 12);
             this.pnDgv.Name = "pnDgv";
-            this.pnDgv.Size = new System.Drawing.Size(776, 354);
+            this.pnDgv.Size = new System.Drawing.Size(927, 360);
             this.pnDgv.TabIndex = 4;
             // 
             // lblTexto
@@ -92,7 +92,7 @@
             this.lblTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTexto.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTexto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTexto.Location = new System.Drawing.Point(189, 370);
+            this.lblTexto.Location = new System.Drawing.Point(340, 376);
             this.lblTexto.Name = "lblTexto";
             this.lblTexto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblTexto.Size = new System.Drawing.Size(599, 19);
@@ -104,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(951, 456);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.pnDgv);
             this.Controls.Add(this.btnBuscar);

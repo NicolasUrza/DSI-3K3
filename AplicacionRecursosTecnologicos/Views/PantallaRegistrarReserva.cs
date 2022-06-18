@@ -108,11 +108,23 @@ namespace AplicacionRecursosTecnologicos.Views
 
         public void solicitarSeleccionTurnos(List<String[]> turnos)
         {
-            this.lblTexto.Text = "Seleccione un Turno a Reservar";
+            this.lblTexto.Text = "Seleccione una Fecha Disponible";
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Enabled = false;
+            var calendario = new Calendario(turnos, this);
+            Habilitar(calendario);
+        }
+
+        public void MostrarTurnos(List<string[]> turnos)
+        {
+            this.lblTexto.Text = "Seleccione un Turno Disponible";
             this.btnBuscar.Text = "Reservar Turno";
+            this.btnBuscar.Visible = true;
+            this.btnBuscar.Enabled = true;
             this.dgvTurnos = new dgvTurno();
             Habilitar(dgvTurnos);
             dgvTurnos.MostrarTurnos(turnos);
+
         }
 
         public void SolicitarConfirmacionDeReserva(String informacion)

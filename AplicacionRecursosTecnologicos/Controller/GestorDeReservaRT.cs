@@ -82,7 +82,7 @@ namespace AplicacionRecursosTecnologicos.Controller
             if (VerificarPertenenciaAlCI())
                 VerificarTurnosDisponibles(true);
             else
-                MessageBox.Show("NO SOS DEL MISMO CI", "informacion", MessageBoxButtons.OK);
+                VerificarTurnosDisponibles(false);
 
         }
         public bool VerificarPertenenciaAlCI()
@@ -101,6 +101,8 @@ namespace AplicacionRecursosTecnologicos.Controller
                 fechaHoraActual = DateTime.Now;
 
             }
+            else
+                fechaHoraActual = DateTime.Today.AddDays(recursoSeleccionado.mostrarCI().tiempoAntelacionReserva);
             var turnosDisponibles = recursoSeleccionado.misTurnosDisponibles(fechaHoraActual);
             AgruparOrdenarTurnos(turnosDisponibles);
         }
