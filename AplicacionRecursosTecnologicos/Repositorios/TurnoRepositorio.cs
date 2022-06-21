@@ -30,7 +30,7 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public List<CambioEstadoTurno> GetCambiosDelTurno(Turno t, int numeroRT)
         {
             var sentenciaSQL = $"SELECT c.*, e.nombre as nombreEstado, e.ambito as ambito,e.descripcion as descripcion,e.esCancelable as esCancelable,e.esReservable as esReservable from CambioEstadoTurno c " +
-                $"join estado e on e.id_estado=c.id_estado " +
+                $"join estado e on e.nombre=c.nombre and e.ambito = c.ambito " +
                 $"where c.fechaHoraInicioTurno = CONVERT(datetime,'{t.fechaHoraInicio.ToString()}',103) " +
                 $"and c.numeroRT = {numeroRT}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);

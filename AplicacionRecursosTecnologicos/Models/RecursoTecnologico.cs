@@ -20,9 +20,14 @@ namespace AplicacionRecursosTecnologicos.Models
         public Modelo modelo { get; set; }
 
         public List<Turno> turnos { get; set; }
-        public bool sosTipoRecurso(List<int> tprs)
+        public bool sosTipoRecurso(List<TipoRecursoTecnologico> tprs)
         {
-            return tprs.Contains(this.tipoRecursoTecnologico.id_tipo_recurso);
+            List<string> list = new List<string>();
+            foreach (var tipo in tprs)
+            {
+                list.Add(tipo.nombre);
+            };
+            return list.Contains(this.tipoRecursoTecnologico.nombre);
         }
 
         public bool verificarActivo()

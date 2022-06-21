@@ -14,7 +14,6 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public TipoRecursoTecnologico mapearTipoRecursoTecnologico( DataRow fila )
         {
             var tipo = new TipoRecursoTecnologico();
-            tipo.id_tipo_recurso = Convert.ToInt32(fila["id_tipo_recurso"].ToString());
             tipo.nombre = fila["nombre"].ToString();
             tipo.descripcion = fila["descripcion"].ToString();
             return tipo;

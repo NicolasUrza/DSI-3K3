@@ -19,9 +19,9 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         }
         public void Crear(CambioEstadoTurno cet, int numeroRT, DateTime fechaHoraInicioTurno, Estado e)
         {
-            var sentenciaSql = $"Insert Into CambioEstadoTurno(fechaHoraDesde, fechaHoraInicioTurno, numeroRT, id_estado ) " +
+            var sentenciaSql = $"Insert Into CambioEstadoTurno(fechaHoraDesde, fechaHoraInicioTurno, numeroRT, nombre, ambito ) " +
                 $"Values(Convert(DateTime, '{cet.fechaHoraDesde}', 103),  Convert(DateTime, '{fechaHoraInicioTurno}', 103), " +
-                $"{numeroRT}, {e.Id_estado})";
+                $"{numeroRT}, '{e.nombre}', '{e.ambito}')";
             DBHelper.GetDBHelper().EjecutarSQL(sentenciaSql);
         }
     }

@@ -38,9 +38,12 @@ namespace AplicacionRecursosTecnologicos.Views
             Habilitar(dgvTipoRecurso);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            var respuesta = MessageBox.Show("¿Esta seguro que desea cancelar?", "Cancelar Turno", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+                this.Dispose();
         }
         private void Habilitar(Form form)
         {

@@ -16,7 +16,6 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         {
             var rt = new RecursoTecnologico();
             var tipo = new TipoRecursoTecnologico();
-            tipo.id_tipo_recurso = Convert.ToInt32(fila["id_tipo_recurso"].ToString());
             tipo.nombre = fila["nombreTipo"].ToString();
             tipo.descripcion = fila["descripcionTipo"].ToString();
 
@@ -24,7 +23,6 @@ namespace AplicacionRecursosTecnologicos.Repositorios
             rt.numeroRT = Convert.ToInt32(fila["numeroRT"]);
             var modelo = new Modelo();
             modelo.nombre = fila["nombreModelo"].ToString();
-            modelo.Id = Convert.ToInt32(fila["id_modelo"]);
             rt.modelo = modelo;
 
             // conseguimos todos los cambios de estado de este recurso
@@ -38,8 +36,8 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public List<RecursoTecnologico> buscarRecursoTeconologico()
         {
             var sentenciaSQL = "Select rt.*, t.nombre as nombreTipo, t.descripcion as descripcionTipo, m.nombre as nombreModelo " +
-                                "FROM RecursoTecnologico rt Left join TipoRecursoTecnologico t on t.id_tipo_recurso = rt.id_tipo_recurso " +
-                                "Left join Modelo m on m.id_modelo=rt.id_modelo";
+                                "FROM RecursoTecnologico rt Left join TipoRecursoTecnologico t on t.nombre = rt.nombreTipo " +
+                                "Left join Modelo m on m.nombre=rt.nombreModelo";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);
             var listaRT = new List<RecursoTecnologico>();
             foreach (DataRow fila in tablaResultado.Rows)
@@ -68,7 +66,7 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         {
             var sentenciaSQL = $"SELECT c.*, e.nombre as nombreEstado, e.descripcion as descripcionEstado, e.ambito as ambitoEstado, e.esReservable " +
                 $"FROM CambioEstadoRT c " +
-                $"Left join Estado e on e.id_estado = c.id_estado " +
+                $"Left join Estado e on e.nombre = c.nombre and e.ambito=c.ambito " +
                 $"where c.numeroRT = {nroRT}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);
             var listaCambios = new List<CambioEstadoRT>();
@@ -82,8 +80,8 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public RecursoTecnologico GetRecursoByNumero(int numeroRT)
         {
             var sentenciaSQL = "Select rt.*, t.nombre as nombreTipo, t.descripcion as descripcionTipo, m.nombre as nombreModelo " +
-                    "FROM RecursoTecnologico rt Left join TipoRecursoTecnologico t on t.id_tipo_recurso = rt.id_tipo_recurso " +
-                    "Left join Modelo m on m.id_modelo=rt.id_modelo " +
+                    "FROM RecursoTecnologico rt Left join TipoRecursoTecnologico t on t.nombre = rt.nombreTipo " +
+                    "Left join Modelo m on m.nombre=rt.nombreModelo " +
                     $"where rt.numeroRT={numeroRT}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);
 
@@ -136,7 +134,7 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public List<CambioEstadoTurno> GetCambiosDelTurno(Turno t, int numeroRT)
         {
             var sentenciaSQL = $"SELECT c.*, e.nombre as nombreEstado, e.ambito as ambito,e.descripcion as descripcion,e.esCancelable as esCancelable,e.esReservable as esReservable from CambioEstadoTurno c " +
-                $"join estado e on e.id_estado=c.id_estado " +
+                $"join estado e on e.nombre=c.nombre and e.ambito = c.ambito " +
                 $"where c.fechaHoraInicioTurno = CONVERT(datetime,'{t.fechaHoraInicio.ToString()}',103) " +
                 $"and c.numeroRT = {numeroRT}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);

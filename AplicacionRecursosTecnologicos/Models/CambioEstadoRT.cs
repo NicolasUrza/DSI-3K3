@@ -8,7 +8,6 @@ namespace AplicacionRecursosTecnologicos.Models
 {
     public class CambioEstadoRT
     {
-        public int id_cambio_estado { get; set; }
         public DateTime fechaHoraDesde { get; set; }
         public DateTime fechaHoraHasta { get; set; }
 

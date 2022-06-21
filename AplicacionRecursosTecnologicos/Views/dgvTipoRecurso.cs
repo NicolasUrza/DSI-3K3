@@ -29,7 +29,6 @@ namespace AplicacionRecursosTecnologicos.Views
             {
                 var fila = new string[]
                     {
-                        tipo.id_tipo_recurso.ToString(),
                         tipo.nombre,
                         tipo.descripcion
 
@@ -50,14 +49,16 @@ namespace AplicacionRecursosTecnologicos.Views
         {
             return this.dgvTiposRecurso.SelectedRows.Count > 0;
         }
-        public List<int> getTiposSeleccionados()
+        public List<TipoRecursoTecnologico> getTiposSeleccionados()
         {
-            var lista = new List<int>();
+            var lista = new List<TipoRecursoTecnologico>();
 
             for (int i=0; i < dgvTiposRecurso.SelectedRows.Count; i++)
             {
-                var tipo = dgvTiposRecurso.SelectedRows[i].Cells[0].Value;
-                lista.Add(Convert.ToInt32(tipo));
+                var tipo = new TipoRecursoTecnologico();
+                tipo.nombre = dgvTiposRecurso.SelectedRows[i].Cells[0].Value.ToString();
+                tipo.descripcion = dgvTiposRecurso.SelectedRows[i].Cells[1].Value.ToString();
+                lista.Add(tipo);
             }
             return lista;
         }

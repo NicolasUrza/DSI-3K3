@@ -20,8 +20,8 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         public Marca MostrarMarcaDelModelo(Modelo m)
         {
             var sentenciaSQL = "SELECT ma.* FROM Modelo mo " +
-                "LEFT join Marcas ma on mo.id_marca=ma.id_marca " +
-                $"where mo.id_modelo = {m.Id}";
+                "LEFT join Marcas ma on mo.nombreMarca=ma.nombre " +
+                $"where mo.nombre = '{m.nombre}'";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSQL);
             var marca = MapearMarca(tablaResultado.Rows[0]);
             return marca;

@@ -19,7 +19,6 @@ namespace AplicacionRecursosTecnologicos.Repositorios
             estado.esCancelable = Convert.ToBoolean(fila["esCancelable"]);
             estado.esReservable = Convert.ToBoolean(fila["esReservable"]);
             estado.ambito = fila["ambito"].ToString();
-            estado.Id_estado = Convert.ToInt32(fila["id_estado"]);
             return estado;
         }
         public List<Estado> ObtenerEstados()

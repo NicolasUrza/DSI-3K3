@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.dgvTiposRecurso = new System.Windows.Forms.DataGridView();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_tipo_recurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTiposRecurso)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +43,6 @@
             this.dgvTiposRecurso.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvTiposRecurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTiposRecurso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_tipo_recurso,
             this.nombre,
             this.descripcion});
             this.dgvTiposRecurso.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -58,13 +56,6 @@
             this.dgvTiposRecurso.Size = new System.Drawing.Size(800, 450);
             this.dgvTiposRecurso.TabIndex = 1;
             // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
             // nombre
             // 
             this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -72,15 +63,12 @@
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             // 
-            // id_tipo_recurso
+            // descripcion
             // 
-            this.id_tipo_recurso.HeaderText = "id";
-            this.id_tipo_recurso.MinimumWidth = 35;
-            this.id_tipo_recurso.Name = "id_tipo_recurso";
-            this.id_tipo_recurso.ReadOnly = true;
-            this.id_tipo_recurso.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id_tipo_recurso.Visible = false;
-            this.id_tipo_recurso.Width = 35;
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             // 
             // dgvTipoRecurso
             // 
@@ -99,7 +87,6 @@
         #endregion
 
         private DataGridView dgvTiposRecurso;
-        private DataGridViewTextBoxColumn id_tipo_recurso;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
     }

@@ -12,7 +12,7 @@ namespace AplicacionRecursosTecnologicos.Controller
     public class GestorDeReservaRT
     {
         private PantallaRegistrarReserva PantallaRegistrar;
-        private List<int> tiposSeleccionados;
+        private List<TipoRecursoTecnologico> tiposSeleccionados;
         private PersonalCientifico PersonalCientificoActivo;
         private RecursoTecnologico recursoSeleccionado;
         private Turno turnoSeleccionado;
@@ -35,7 +35,7 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         }
 
-        public void TipoRecursoSeleccionado(List<int> tiposSelec)
+        public void TipoRecursoSeleccionado(List<TipoRecursoTecnologico> tiposSelec)
         {
             this.tiposSeleccionados = tiposSelec;
             BuscarRecursoNoEnBaja();
@@ -133,7 +133,7 @@ namespace AplicacionRecursosTecnologicos.Controller
                 $"\n Fecha: {turnoSeleccionado.fechaHoraInicio.ToString("d")} " +
                 $" Dia De La Semana: {DiaSemana[turnoSeleccionado.diaSemana-1]} " +
                 $"\n Desde: {turnoSeleccionado.fechaHoraInicio.ToString("HH:mm")} " +
-                $" Hasta: {turnoSeleccionado.fechaHoraFin.ToString("HH:MM")}" +
+                $" Hasta: {turnoSeleccionado.fechaHoraFin.ToString("HH:mm")}" +
                 $"\n ¿Desea confirmar la Reserva?";
             PantallaRegistrar.SolicitarConfirmacionDeReserva(informacion);
         }
