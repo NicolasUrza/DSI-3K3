@@ -50,8 +50,8 @@ namespace AplicacionRecursosTecnologicos.Models
        
         public Marca MostrarMarcaDelModelo()
         {
-            var marcaServicio = new MarcaServicio();
-            return marcaServicio.GetMarcaDelModelo(this.modelo);
+            return modelo.GetMarcaDelModelo();
+
         }
 
         public Estado getEstadoActual()

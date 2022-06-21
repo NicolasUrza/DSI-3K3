@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicacionRecursosTecnologicos.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,10 @@ namespace AplicacionRecursosTecnologicos.Models
     {
         public string nombre { get; set; }
 
+        public Marca GetMarcaDelModelo()
+        {
+            var marcaServicio = new MarcaServicio();
+            return marcaServicio.GetMarcaDelModelo(this);
+        }
     }
 }
