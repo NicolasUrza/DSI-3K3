@@ -18,8 +18,8 @@ namespace AplicacionRecursosTecnologicos.Controller
                     " con horario desde las " + fechaHoraInicio.ToString("HH:mm") + "hs hasta las " + fechaHoraFin.ToString("HH:mm")+"hs";
 
             foreach (string contacto in contactos) {
-                var accountSid = "AC2d7f6e8bc1f3e33e26a46b20f8c10098";
-                var authToken = "2fe4e39882643df05dea5856fd1832e3";
+                var accountSid = "";
+                var authToken = "";
                 TwilioClient.Init(accountSid, authToken);
 
                 var messageOptions = new CreateMessageOptions(
