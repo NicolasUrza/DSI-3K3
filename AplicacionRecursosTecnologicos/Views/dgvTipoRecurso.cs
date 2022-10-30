@@ -22,18 +22,13 @@ namespace AplicacionRecursosTecnologicos.Views
         {
 
         }
-        public void mostrarDatosTipoRecurso(List<TipoRecursoTecnologico> tipos)
+        public void mostrarDatosTipoRecurso(List<String[]> tipos)
         {
             this.dgvTiposRecurso.Rows.Clear();
-            foreach (TipoRecursoTecnologico tipo in tipos)
+            foreach (var tipo in tipos)
             {
-                var fila = new string[]
-                    {
-                        tipo.nombre,
-                        tipo.descripcion
-
-                    };
-                this.dgvTiposRecurso.Rows.Add(fila);
+                
+                this.dgvTiposRecurso.Rows.Add(tipo);
 
 
             }

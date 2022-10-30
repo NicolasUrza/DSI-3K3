@@ -59,5 +59,14 @@ namespace AplicacionRecursosTecnologicos.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ..\res\RemitoLogo (1).ico.
+        /// </summary>
+        internal static string musica {
+            get {
+                return ResourceManager.GetString("musica", resourceCulture);
+            }
+        }
     }
 }

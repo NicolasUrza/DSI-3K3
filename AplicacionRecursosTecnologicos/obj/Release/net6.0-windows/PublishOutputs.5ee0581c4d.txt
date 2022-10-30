@@ -1,0 +1,15 @@
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\AplicacionRecursosTecnologicos.exe
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\AplicacionRecursosTecnologicos.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\AplicacionRecursosTecnologicos.deps.json
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\AplicacionRecursosTecnologicos.runtimeconfig.json
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\AplicacionRecursosTecnologicos.pdb
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\MailKit.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\Microsoft.SqlServer.Types.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\MimeKit.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\BouncyCastle.Crypto.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\System.Data.SqlClient.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\runtimes\win-arm64\native\sni.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\runtimes\win-x64\native\sni.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\runtimes\win-x86\native\sni.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\usuario\Desktop\UTN-SISTEMAS\3ero\DSI\PPA\AplicacionRecursosTecnologicos\AplicacionRecursosTecnologicos\bin\Release\net6.0-windows\publish\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

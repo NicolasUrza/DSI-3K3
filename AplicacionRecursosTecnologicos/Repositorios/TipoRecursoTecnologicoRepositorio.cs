@@ -22,6 +22,7 @@ namespace AplicacionRecursosTecnologicos.Repositorios
         {
             var sentenciaSql = " Select * From TipoRecursoTecnologico";
             var filas = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            
             var tipos = new List<TipoRecursoTecnologico>();
             foreach (DataRow fila in filas.Rows)
             {

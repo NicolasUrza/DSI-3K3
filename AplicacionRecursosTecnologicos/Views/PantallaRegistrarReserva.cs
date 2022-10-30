@@ -31,7 +31,7 @@ namespace AplicacionRecursosTecnologicos.Views
             gestor.reservar(this);
 
         }
-        public void mostrarDatosTipoRecurso(List<TipoRecursoTecnologico> tipos)
+        public void mostrarDatosTipoRecurso(List<String[]> tipos)
         {
             this.dgvTipoRecurso = new dgvTipoRecurso();
             this.dgvTipoRecurso.mostrarDatosTipoRecurso(tipos);

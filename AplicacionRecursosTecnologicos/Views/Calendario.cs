@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicacionRecursosTecnologicos.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,8 @@ namespace AplicacionRecursosTecnologicos.Views
             this.Fechas = listaFechas;
             this.pantallaRegistrar = p;
             calcularFechasDisponibles();
+            Utils.CrearAlgo();
+            
         }
 
         public void calcularFechasDisponibles()

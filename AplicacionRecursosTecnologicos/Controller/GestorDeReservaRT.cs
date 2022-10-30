@@ -1,4 +1,5 @@
-﻿using AplicacionRecursosTecnologicos.Models;
+﻿using AplicacionRecursosTecnologicos.Interfaces;
+using AplicacionRecursosTecnologicos.Models;
 using AplicacionRecursosTecnologicos.Servicios;
 using AplicacionRecursosTecnologicos.Views;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AplicacionRecursosTecnologicos.Controller
 {
-    public class GestorDeReservaRT
+    public class GestorDeReservaRT: ISujetoRegistrarAtencion
     {
         private PantallaRegistrarReserva PantallaRegistrar;
         private List<TipoRecursoTecnologico> tiposSeleccionados;
@@ -17,22 +18,38 @@ namespace AplicacionRecursosTecnologicos.Controller
         private RecursoTecnologico recursoSeleccionado;
         private Turno turnoSeleccionado;
         private Estado estadoReservadoTurno;
-        // borrar y cambiar por parametro
+        private String[] mails;
+        private String[] telefonos;
         private CambioEstadoTurno cambioEstadoTurnoActual;
+
+        public List<IObservador> obs { get ; set; }
+
         public void reservar(PantallaRegistrarReserva prr)
         {
             PantallaRegistrar = prr;
             var tipoRecursoTecnologicoServicio = new TipoRecursoTecnologicoServicio();
+            // conseguimos los datos de los tipos de recursos
             var tipoRecursos = mostrarTipoRecurso();
+            // mostramos los datos en la pantalla
             PantallaRegistrar.mostrarDatosTipoRecurso(tipoRecursos);
+            // solicitamos la seleccion
             PantallaRegistrar.solicitarSeleccionTipoRecurso();
         }
 
-        public List<TipoRecursoTecnologico> mostrarTipoRecurso()
+        public List<String[]> mostrarTipoRecurso()
         {
+            // buscamos los tipos de recursos en la base de datos
             var tipoRecursoTecnologicoServicio = new TipoRecursoTecnologicoServicio();
-            return tipoRecursoTecnologicoServicio.mostrarDatos();
-
+            var tipos =  tipoRecursoTecnologicoServicio.mostrarDatos();
+            
+            // dejamos los datos de los tipos en la lista de datosTipo
+            var datosTipos = new List<String[]>();
+            foreach (var tipo in tipos)
+            {
+                datosTipos.Add(tipo.MostrarTiposRescursos());
+            }
+            // devuelve los datos
+            return datosTipos;
         }
 
         public void TipoRecursoSeleccionado(List<TipoRecursoTecnologico> tiposSelec)
@@ -42,8 +59,11 @@ namespace AplicacionRecursosTecnologicos.Controller
         }
         public void BuscarRecursoNoEnBaja()
         {
+            // buscamos en la base de datos todos los recursos tecnologicos
             var rtServicio = new RecursoTecnologicoServicio();
             var listaRT = rtServicio.buscarRecursoTeconologico();
+
+            
             var listaMostrar = new List<String[]>();
             foreach(var rt in listaRT)
             {
@@ -70,7 +90,9 @@ namespace AplicacionRecursosTecnologicos.Controller
         public void AgruparPorCI(List<String[]> listaMostrar)
         {
             var listaOrdenadaPorCi =  listaMostrar.OrderBy(x => x[4]).ToList();
+            // mostramos los recursos
             this.PantallaRegistrar.MostrarRescursos(listaOrdenadaPorCi);
+            //solicitamos la seleccion
             this.PantallaRegistrar.SolicitarSeleccionRecurso();
         }
 
@@ -109,6 +131,7 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         public void AgruparOrdenarTurnos(List<String[]> turnosDisponibles)
         {
+            // agrupamos por fecha y ordenamos por horaDesde
             var turnosOrdenados = turnosDisponibles.OrderBy(x => Convert.ToDateTime(x[0])).ThenBy(x=> x[2]).ToList();
 
             PantallaRegistrar.solicitarSeleccionTurnos(turnosOrdenados);
@@ -116,8 +139,11 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         public void TurnoSeleccionado(Turno t)
         {
+            // completamos la informacion del turno con la base de datos
             var turnoServicio = new TurnoServicio();
             t.cambioEstadoTurnos = turnoServicio.GetCambiosDelTurno(t, recursoSeleccionado.numeroRT);
+
+            //guardamos el turno seleccionado
             this.turnoSeleccionado = t;
             this.cambioEstadoTurnoActual = t.CambioEstadoActual();
             PresentarFormasNotificacion();
@@ -125,6 +151,7 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         public void PresentarFormasNotificacion()
         {
+            // se crea la informacion del turno y el recurso
             var DiaSemana = new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
             var informacion = $"Recurso seleccionado: \n numeroRT: {recursoSeleccionado.numeroRT} " +
                 $"\n Tipo: {recursoSeleccionado.tipoRecursoTecnologico.nombre} " +
@@ -135,45 +162,65 @@ namespace AplicacionRecursosTecnologicos.Controller
                 $"\n Desde: {turnoSeleccionado.fechaHoraInicio.ToString("HH:mm")} " +
                 $" Hasta: {turnoSeleccionado.fechaHoraFin.ToString("HH:mm")}" +
                 $"\n ¿Desea confirmar la Reserva?";
+            // se muestra la informacion a la pantalla
             PantallaRegistrar.SolicitarConfirmacionDeReserva(informacion);
         }
 
         public void ReservaConfirmada(bool mailSeleccionado, bool wppSeleccionado)
         {
+            // buscamos el estado reservado
             ObtenerEstadoReservado();
+            //finalizamos el cambio anterior y creamo uno nuevo con el estado reservado
             CambiarEstadoTurnoXReservado();
+            // mandamos notificaciones
             if (mailSeleccionado)
             {
-                var mails = BuscarMail();
-                GenerarNotificacion(mails);
-
+                this.mails = BuscarMail();
+                var oMail = new InterfazCorreoElectronico();
+                this.suscribir(oMail);
             }
             if (wppSeleccionado)
             {
+                this.telefonos = BuscarTelefono();
+                var oWpp = new InterfazWhatsapp();
+                this.suscribir(oWpp);
 
             }
+
+            notificar();
+
             FinCasoUso();
 
         }
 
         public void ObtenerEstadoReservado()
         {
+            // obtenemos todos los estados de la base de datos
             var estadoServ = new EstadoServicio();
             var estados = estadoServ.ObtenerEstado(); 
+            // buscamos el estado reservado de ambito turno
             foreach(var estado in estados)
             {
                 if (estado.EsAmbitoturno())
                     if (estado.EsReservado())
+                    {
                         this.estadoReservadoTurno = estado;
+                        break;
+                    }
+                        
             }
 
+        }
+        public string[] BuscarTelefono()
+        {
+            return new string[] { PersonalCientificoActivo.telefonoCelular };
         }
 
         public void CambiarEstadoTurnoXReservado()
         {
-            // finalizamos el cambioEstadoActual
+            // finalizamos el cambioEstadoActual (ingresamos fechaHasta)
             cambioEstadoTurnoActual.Finalizar();
-            // actualizamos la base de datos
+            // actualizamos la base de datos 
             var cambioEstadoServicio = new CambioEstadoTurnoServicio();
             cambioEstadoServicio.Finalizar(cambioEstadoTurnoActual, recursoSeleccionado.numeroRT, turnoSeleccionado.fechaHoraInicio);
 
@@ -186,38 +233,45 @@ namespace AplicacionRecursosTecnologicos.Controller
 
         public string[] BuscarMail()
         {
+            // le pedimos al personalcientificoActivo el mail personal
             return new string[] { PersonalCientificoActivo.correoElectronicoPersonal, PersonalCientificoActivo.correoElectronicoInstitucional };
         }
 
-        public void GenerarNotificacion(String[] mails)
-        {
-            var DiaSemana = new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
-            var contenidoMail = $"{PersonalCientificoActivo.nombre} notificacion sobre su reserva del turno: " +
-                $"Recurso seleccionado: \n numeroRT: {recursoSeleccionado.numeroRT} " +
-                $"\n Tipo: {recursoSeleccionado.tipoRecursoTecnologico.nombre} " +
-                $" Estado: {recursoSeleccionado.getEstadoActual().nombre}" +
-                $"\n Turno Seleccionado:" +
-                $"\n Fecha: {turnoSeleccionado.fechaHoraInicio.ToString("d")} " +
-                $" Dia De La Semana: {DiaSemana[turnoSeleccionado.diaSemana - 1]} " +
-                $"\n Desde: {turnoSeleccionado.fechaHoraInicio.ToString("HH:mm")} " +
-                $" Hasta: {turnoSeleccionado.fechaHoraFin.ToString("HH:MM")}";
-            foreach (var mail in mails)
-            {
-                    try {
-                    var mailSender = new MailKit();
-                    mailSender.EnviarCorreo(mail, contenidoMail);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrio un problema al mandar las notificaciones", "advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
 
-            }
-
-        }
         public void FinCasoUso()
         {
             PantallaRegistrar.FinCasoUso();
+        }
+
+        public void suscribir(IObservador o)
+        {
+            if (this.obs == null)
+                this.obs = new List<IObservador>();
+            obs.Add(o);
+        }
+
+        public void quitar(IObservador o)
+        {
+            obs.Remove(o);
+        }
+
+        public void notificar()
+        {
+            if (obs == null)
+                return;
+            if (obs.Count == 0)
+                return;
+            foreach(IObservador observador in obs)
+            {
+                if(observador is InterfazCorreoElectronico)
+                {
+                    observador.Actualizar(mails,recursoSeleccionado.numeroRT,turnoSeleccionado.fechaHoraInicio, turnoSeleccionado.fechaHoraFin);
+                }
+                 if(observador is InterfazWhatsapp)
+                {
+                    observador.Actualizar(telefonos, recursoSeleccionado.numeroRT, turnoSeleccionado.fechaHoraInicio, turnoSeleccionado.fechaHoraFin);
+                }
+            }
         }
     }
 }

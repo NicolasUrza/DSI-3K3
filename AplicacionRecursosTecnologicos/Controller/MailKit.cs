@@ -16,7 +16,7 @@ namespace AplicacionRecursosTecnologicos.Controller
             mailMessage.From.Add(new MailboxAddress("Aplicacion Rescursos Tecnologicos", "nicolasurza@gmail.com"));
             mailMessage.To.Add(new MailboxAddress("Cientifico", mail));
             mailMessage.Subject = "Reserva de Turno";
-            mailMessage.Body = new TextPart("plain")
+            mailMessage.Body = new TextPart("html")
             {
                 Text = contenido
         };
